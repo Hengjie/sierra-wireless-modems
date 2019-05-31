@@ -214,7 +214,7 @@ zipsha512expected='dad82310097c1ac66bb93da286c2e6f18b691cfea98df2756c8b044e58150
 if [ "$zipsha512actual" != "$zipsha512expected" ]; then
     printf "${BLUE}---${NC}\n"
     echo 'Download and unzip SWI9X30C_02.30.01.01_Generic_002.045_000 firmware...'
-    curl -o SWI9X30C_02.30.01.01_Generic_002.045_000.zip -L https://source.sierrawireless.com/~/media/support_downloads/airprime/74xx/fw/02_30_03_00/7455/swi9x30c_02.30.03.00_generic_002.046_001.ashx
+    curl -o SWI9X30C_02.30.01.01_Generic_002.045_000.zip -L https://source.sierrawireless.com/~/media/support_downloads/airprime/74xx/fw/02_30_01_01/7455/swi9x30c_02.30.01.01_generic_002.045_000.ashx
     unzip -o SWI9X30C_02.30.01.01_Generic_002.045_000.zip
 fi
 
