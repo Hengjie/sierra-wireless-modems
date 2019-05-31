@@ -78,6 +78,8 @@ apt-get update
 apt-get install make gcc curl cpanminus unzip libgudev-1.0-dev -y
 # Use cpan to install/compile all dependencies needed by swi_setusbcomp.pl
 cpanm install UUID::Tiny IPC::Shareable JSON
+apt-get remove make gcc
+apt-get autoremove
 
 # apt-get will fail to download minicom/qmi-utilities on LiveCD/LiveUSB without adding repositories
 # Also, if you add security.ubuntu.com bionic main universe, you'll get an older version of libqmi (1.18)
