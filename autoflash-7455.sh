@@ -75,7 +75,7 @@ printf "${BLUE}---${NC}\n"
 echo "Installing all needed prerequisites..."
 apt-get update
 # need make and GCC for compiling perl modules
-apt-get install make gcc curl cpanminus unzip libgudev -y
+apt-get install make gcc curl cpanminus unzip libgudev-1.0-dev -y
 # Use cpan to install/compile all dependencies needed by swi_setusbcomp.pl
 cpanm install UUID::Tiny IPC::Shareable JSON
 
