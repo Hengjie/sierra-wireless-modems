@@ -75,9 +75,9 @@ printf "${BLUE}---${NC}\n"
 echo "Installing all needed prerequisites..."
 apt-get update
 # need make and GCC for compiling perl modules
-apt-get install make gcc curl -y
+apt-get install make gcc curl cpanminus unzip -y
 # Use cpan to install/compile all dependencies needed by swi_setusbcomp.pl
-yes | cpan install UUID::Tiny IPC::Shareable JSON
+cpanm install UUID::Tiny IPC::Shareable JSON
 
 # apt-get will fail to download minicom/qmi-utilities on LiveCD/LiveUSB without adding repositories
 # Also, if you add security.ubuntu.com bionic main universe, you'll get an older version of libqmi (1.18)
@@ -214,7 +214,7 @@ zipsha512expected='dad82310097c1ac66bb93da286c2e6f18b691cfea98df2756c8b044e58150
 if [ "$zipsha512actual" != "$zipsha512expected" ]; then
     printf "${BLUE}---${NC}\n"
     echo 'Download and unzip SWI9X30C_02.30.01.01_Generic_002.045_000 firmware...'
-    curl -o SWI9X30C_02.30.01.01_Generic_002.045_000.zip -L https://source.sierrawireless.com/~/media/support_downloads/airprime/74xx/fw/02_30_01_01/7455/swi9x30c_02.30.01.01_generic_002.045_000.ashx
+    curl -o SWI9X30C_02.30.01.01_Generic_002.045_000.zip -L https://source.sierrawireless.com/~/media/support_downloads/airprime/74xx/fw/02_30_03_00/7455/swi9x30c_02.30.03.00_generic_002.046_001.ashx
     unzip -o SWI9X30C_02.30.01.01_Generic_002.045_000.zip
 fi
 
@@ -222,7 +222,7 @@ zipsha512actual=`sha512sum SWI9X30C_02.30.01.01_Generic_002.045_000.zip |  awk '
 if [ "$zipsha512actual" != "$zipsha512expected" ]; then 
     printf "${BLUE}---${NC}\n"
     printf "Download of ${BLUE}SWI9X30C_02.30.01.01_Generic_002.045_000.zip${NC} failed, exiting...\n"
-    exit
+    #exit
 fi
 
 deviceid=`lsusb | grep -i -E '1199:9071|1199:9079|413C:81B6' | awk '{print $6}'`
