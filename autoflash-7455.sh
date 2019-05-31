@@ -75,7 +75,7 @@ printf "${BLUE}---${NC}\n"
 echo "Installing all needed prerequisites..."
 apt-get update
 # need make and GCC for compiling perl modules
-apt-get install make gcc curl cpanminus unzip -y
+apt-get install make gcc curl cpanminus unzip libgudev -y
 # Use cpan to install/compile all dependencies needed by swi_setusbcomp.pl
 cpanm install UUID::Tiny IPC::Shareable JSON
 
@@ -239,7 +239,6 @@ printf "${BLUE}---${NC}\n"
 # Flash SWI9X30C_02.30.01.01_Generic_002.045_000 onto Generic Sierra Modem
 echo 'Flashing SWI9X30C_02.30.01.01_Generic_002.045_000 onto Generic Sierra Modem...'
 sleep 5
-ln -sf /lib/x86_64-linux-gnu/libudev.so.1 /lib/x86_64-linux-gnu/libudev.so.0
 qmi-firmware-update --update -d "$deviceid" SWI9X30C_02.30.01.01.cwe SWI9X30C_02.30.01.01_GENERIC_002.045_000.nvu
 rc=$?
 if [[ $rc != 0 ]]
